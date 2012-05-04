@@ -20,8 +20,8 @@ class FnordMetric::Namespace
     self
   end
 
-  def announce(event)                  
-    announce_to_timeline(event)
+  def announce(event)
+    announce_to_timeline(event) if active_users_available
     announce_to_typelist(event)
     
     if event[:_session]
