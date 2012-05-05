@@ -21,9 +21,11 @@ class FnordMetric::Namespace
   end
 
   def announce(event)
-    announce_to_timeline(event) if active_users_available
-    announce_to_typelist(event)
-    
+    if active_users_available
+      announce_to_timeline(event)
+      announce_to_typelist(event)
+    end
+
     if event[:_session]
       event[:_session_key] = announce_to_session(event).session_key 
     end
